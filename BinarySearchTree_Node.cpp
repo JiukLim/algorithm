@@ -20,9 +20,9 @@ Node* searchNode(Node* Tree, int findData){
 	if (Tree->Data == findData)
 		return Tree;
 	else if (Tree->Data < findData)
-		return searchNode(Tree->Left, findData);
-	else
 		return searchNode(Tree->Right, findData);
+	else if (Tree->Data > findData)
+		return searchNode(Tree->Left, findData);
 }
 
 void insertNode(Node* Tree, Node* newNode){
@@ -84,10 +84,10 @@ int main(){
 	insertNode(Tree, createNode(14));
 	insertNode(Tree, createNode(21));
 
+
 	while (1){
 		cin >> input;
 		findNode = searchNode(Tree, input);
-
 		if (findNode != NULL){
 			cout << "해당 노드를 찾았습니다. 노드를 제거합니다. 노드의 위치는 " << findNode << "입니다." << endl;
 			removeNode(Tree, input);
